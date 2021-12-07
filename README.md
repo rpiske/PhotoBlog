@@ -1,1 +1,1 @@
-# webFinalProj
+# PhotoBlog
