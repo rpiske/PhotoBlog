@@ -1,0 +1,23 @@
+<h3 class="text-center text-light display-6">Recent Activity</h3>
+
+{% for message in room_messages %}
+    <div class="card-group">
+        <div class="card border-dark mb-3">
+            <div class="card-header">
+                <a href="{% url 'user-profile' message.user.id %}">@{{ message.user }}</a>
+                <p>{{ message.created|timesince }} ago</p>
+            </div>
+            <div class="card-body text-dark">
+                <p class="card-text">replied to "{{ message.room }}"</p>
+                <p class="card-text fw-bold">{{ message }}</p>
+                <p class="card-text">
+                    {% if request.user == message.user %}
+                        <a class="btn btn-danger btn-sm" href="{%  url 'delete-message' message.id %}">Delete</a>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+

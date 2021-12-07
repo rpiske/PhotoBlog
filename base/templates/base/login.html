@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load static %}
+            {% block login %}
+                {% for message in messages %}
+                    <div class="alert alert-danger">
+                           {{ message }}
+                    </div>
+                {% endfor %}
+                {% if page == 'login' %}
+                    <div>
+                    <h4 class="card-title text-center">Welcome!</h4>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div class="container">
+                                <div class="row my-3">
+                                    <label class="bold col-4">Username:</label>
+                                    <input class="col-8" type="text" name="username" placeholder="Enter Username..">
+                                </div>
+                                <div class="row my-3">
+                                    <label class="bold col-4">Password:</label>
+                                    <input class="col-8" type="password" name="password" placeholder="Enter Password..">
+                                </div>
+                                <div class="row">
+                                    <input class="btn btn-primary my-3" type="submit" value="Login">
+                                </div>
+                            </div>
+                        </form>
+                        <hr>
+                        <div class="m-2 p-2 text-center">
+                            <p class="text-primary">Haven't signed up yet?</p>
+                            <a class="btn btn-outline-primary" href="{% url 'register' %}" role="button">Sign-up</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="card text-dark card border-secondary mb-3 py-5">
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div class="text-center h5 my-5">No account? No problem!</div>
+                            {{ form.as_p }}
+                            <input type="submit" value="Register">
+                        </form>
+                    </div>
+                    <div class="text-center h4 my-5">Have an account already?</div>
+                {% endif %}
+            {% endblock %}

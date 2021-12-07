@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="card m-5 p-1" style="width: 33%;">
+    <div class="card-header bg-dark text-light lead mb-2">Upload your photo here!</div>
+    <div class="card-body bg-light border">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="dropdown m-3">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Topic
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {% for topic in form.topic %}
+                <li><a class="dropdown-item" href="#">{{ topic }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <br>
+        <div class="mb-3 m-3">
+            <label class="form-label">Photo Name:</label>
+            {{ form.name }}
+        </div>
+        <div class="mb-3 m-3">
+            <label class="form-label">Description:</label>
+            {{ form.description }}
+        </div>
+        <div class="mb-3 m-3">
+            <label class="form-label">Choose a photo to upload:</label>
+            {{ form.room_main_img }}
+        </div>
+        <input class="btn btn-success btn-lg m-3" type="submit" value="Submit">
+        </form>
+    </div>
+    </div>
+
+{% endblock %}
+
+<form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

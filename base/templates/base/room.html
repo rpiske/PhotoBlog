@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <div class="container m-5">
+        <div class="card shadow-sm p-1" style="width: 30rem;">
+          <img src="{{ room.room_main_img.url }}" class="card-image-top img-fluid" alt="img-responsive">
+          <div class="card-body">
+            <h2 class="card-title">{{ room.name }}</h2>
+            <p class="card-text lead">{{ room.description }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h3 class="card-title">Conversations</h3>
+                {% for message in room_messages %}
+                    <div>
+                        {% if request.user == message.user %}
+                            <a href="{%  url 'delete-message' message.id %}">Delete</a>
+                        {% endif %}
+                        <small>@{{ message.user }}   {{ message.created|timesince }} ago</small>
+                        <p>{{ message.body }}</p>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </li>
+            <li class="list-group-item">
+                {% if request.user.is_authenticated %}
+                    <div class="comment-form">
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <input type="text" name="body" placeholder="Write your message here.." style="height:150px; width:300px;">
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                {% endif %}
+            </li>
+            <li class="list-group-item">
+                <h3 class="card-title">Participants</h3>
+                {% for user in participants %}
+                    <div>
+                        <p>@{{ user.username }}</p>
+                    </div>
+                {% endfor %}
+            </li>
+          </ul>
+        </div>
+    </div>
+{% endblock %}
