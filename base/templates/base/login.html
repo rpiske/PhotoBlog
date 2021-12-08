@@ -8,16 +8,16 @@
                 {% endfor %}
                 {% if page == 'login' %}
                     <div>
-                    <h4 class="card-title text-center">Welcome!</h4>
+                    <h4 class="card-title text-center text-light">Welcome!</h4>
                         <form method="POST" action="">
                             {% csrf_token %}
                             <div class="container">
                                 <div class="row my-3">
-                                    <label class="bold col-4">Username:</label>
+                                    <label class="bold col-4 text-light">Username:</label>
                                     <input class="col-8" type="text" name="username" placeholder="Enter Username..">
                                 </div>
                                 <div class="row my-3">
-                                    <label class="bold col-4">Password:</label>
+                                    <label class="bold col-4 text-light">Password:</label>
                                     <input class="col-8" type="password" name="password" placeholder="Enter Password..">
                                 </div>
                                 <div class="row">

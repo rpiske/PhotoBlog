@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
-      <li class="nav-link justify-content-center"><a href="{% url 'home' %}">All</a></li>
+      <li class="nav-link justify-content-center fw-bold"><a href="{% url 'home' %}">All</a></li>
       {% for topic in topics %}
-          <li><a class="nav-link" href="{% url 'home' %}?q={{ topic.name }}">{{ topic.name }}</a></li>
+          <li><a class="nav-link fw-bold" href="{% url 'home' %}?q={{ topic.name }}">{{ topic.name }}</a></li>
       {% endfor %}
 </ul>
 
