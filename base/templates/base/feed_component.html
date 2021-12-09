@@ -15,11 +15,13 @@
                 <a class="btn btn-primary" href="{% url 'room' room.id %}">Comment</a>
                 <a class="btn btn-info" href="{% url 'update-room' room.id %}">Edit</a>
                 <a class="btn btn-danger mt-auto" href="{% url 'delete-room' room.id %}">Delete</a>
+              </div>
           {% else %}
               <div class="d-grid gap-2 col-10 mx-auto my-3">
                 <a class="btn btn-lg btn-primary" href="{% url 'room' room.id %}">Comment</a>
+              </div>
           {% endif %}
-          </div>
+
       </div>
     </div>
   </div>
